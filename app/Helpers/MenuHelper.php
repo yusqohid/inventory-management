@@ -29,6 +29,17 @@ class MenuHelper
                     ],
                 ],
             ],
+            [
+                'icon' => 'product',
+                'name' => 'Products Management',
+                'subItems' => [
+                    [
+                        'name' => 'Product',
+                        'path' => route('products.index', absolute: false),
+                        'pro' => false
+                    ],
+                ],
+            ],
         ];
     }
 
