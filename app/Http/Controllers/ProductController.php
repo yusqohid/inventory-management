@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,7 +24,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::select(['name'])->get();
+        $suppliers = Supplier::select(['name'])->get();
+
+        return view('products.create', compact('categories', 'suppliers'));
     }
 
     /**
