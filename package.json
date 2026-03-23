@@ -4,15 +4,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
-    },
-    "devDependencies": {
-        "@tailwindcss/vite": "^4.1.12",
-        "axios": "^1.11.0",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^2.0.0",
-        "tailwindcss": "^4.1.12",
-        "vite": "^7.0.4"
+        "dev": "vite",
+        "fmt": "oxfmt"
     },
     "dependencies": {
         "@floating-ui/dom": "^1.7.4",
@@ -28,5 +21,13 @@
         "jsvectormap": "^1.7.0",
         "prismjs": "^1.30.0",
         "swiper": "^12.0.3"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.12",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0.0",
+        "tailwindcss": "^4.1.12",
+        "vite": "^7.0.4"
     }
 }
