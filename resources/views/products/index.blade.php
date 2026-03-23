@@ -10,6 +10,11 @@
             </x-ui.alert>
         @endsession
 
+        <a href="{{ route('products.create') }}" class="inline-flex items-center justify-center font-medium gap-2 rounded-lg transition">
+            <x-ui.button>
+                    Add New Product
+            </x-ui.button>
+        </a>
         <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
             <div class="max-w-full overflow-x-auto custom-scrollbar">
                 <table class="w-full min-w-[1102px]">
