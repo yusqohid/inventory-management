@@ -89,31 +89,47 @@
     </div>
 
     <div x-show="showSupplierModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" x-cloak>
-        <div class="w-full max-w-lg rounded-xl bg-white p-6 dark:bg-gray-900">
-            <h3 class="mb-4 text-lg font-bold dark:text-white">Add New Supplier</h3>
-            <form action="{{ route('suppliers.store') }}" method="POST">
-                @csrf
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2">
-                        <label class="block text-sm dark:text-gray-400">Supplier Name</label>
-                        <input type="text" name="name" required class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm dark:text-gray-400">Contact Person</label>
-                        <input type="text" name="contact_person" required class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm dark:text-gray-400">Phone</label>
-                        <input type="text" name="phone" required class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white">
-                    </div>
+    <div class="w-full max-w-lg rounded-xl bg-white p-6 dark:bg-gray-900 shadow-2xl">
+        <h3 class="mb-4 text-lg font-bold dark:text-white">Add New Supplier</h3>
+
+        <form action="{{ route('suppliers.store') }}" method="POST">
+            @csrf
+            <div class="grid grid-cols-2 gap-4">
+                {{-- Name --}}
+                <div class="col-span-2">
+                    <label class="block text-sm font-medium dark:text-gray-400">Supplier Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="name" value="{{ old('name') }}" class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white @error('name') border-red-500 @enderror">
+                    @error('name', 'supplier') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
                 </div>
-                <div class="mt-6 flex justify-end gap-3">
-                    <button type="button" @click="showSupplierModal = false" class="text-sm text-gray-500">Cancel</button>
-                    <x-ui.button type="submit">Save Supplier</x-ui.button>
+
+                {{-- Contact Person --}}
+                <div>
+                    <label class="block text-sm font-medium dark:text-gray-400">Contact Person <span class="text-red-500">*</span></label>
+                    <input type="text" name="contact_person" value="{{ old('contact_person') }}" class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white @error('contact_person') border-red-500 @enderror">
+                    @error('contact_person') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
                 </div>
-            </form>
-        </div>
+
+                {{-- Phone --}}
+                <div>
+                    <label class="block text-sm font-medium dark:text-gray-400">Phone <span class="text-red-500">*</span></label>
+                    <input type="text" name="phone" value="{{ old('phone') }}" class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white @error('phone') border-red-500 @enderror">
+                    @error('phone') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                {{-- Email (Opsional tapi sering lupa diinput) --}}
+                <div class="col-span-2">
+                    <label class="block text-sm font-medium dark:text-gray-400">Email (Optional)</label>
+                    <input type="email" name="email" value="{{ old('email') }}" class="w-full rounded-lg border border-gray-300 p-2 dark:bg-gray-800 dark:text-white">
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end gap-3">
+                <button type="button" @click="showSupplierModal = false" class="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">Cancel</button>
+                <x-ui.button type="submit">Save Supplier</x-ui.button>
+            </div>
+        </form>
     </div>
+</div>
 </div>
 
 <style> [x-cloak] { display: none !important; } </style>
