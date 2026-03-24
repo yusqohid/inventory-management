@@ -35,7 +35,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'category_id'     => 'required|exists:categories,id',
+            'supplier_id'     => 'required|exists:suppliers,id',
+            'sku'             => 'required|string|unique:products,sku',
+            'name'            => 'required|string|max:255',
+            'description'     => 'nullable|string',
+            'purchase_price'  => 'required|numeric|min:0',
+            'sale_price'      => 'required|numeric|min:0',
+            'quantity'        => 'required|integer|min:0',
+            'alert_threshold' => 'required|integer|min:0',
+        ]);
+
+        Product::created($validated);
+
+        return redirect()->route('products.index')
+                         ->with('success', 'Product has been added successfully!');
     }
 
     /**
