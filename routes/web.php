@@ -17,8 +17,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
-    Route::get('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/suppliers/store', [SupplierController::class, 'store'])->name('suppliers.store');
+    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::post('/suppliers/store', [SupplierController::class, 'store'])->name('suppliers.store');
 });
 
 require __DIR__ . '/auth.php';
