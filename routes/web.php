@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.auth.signin');
-})->name('home');
+})->middleware('guest')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
