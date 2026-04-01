@@ -50,8 +50,8 @@
 
                     {{-- Sisanya sama seperti input sebelumnya (SKU, Price, dll) --}}
                     <div>
-                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">SKU</label>
-                        <input type="text" name="sku" value="{{ old('sku') }}" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700 dark:text-white">
+                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Purchase Price</label>
+                        <input type="number" name="purchase_price" value="{{ old('purchase_price') }}" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700 dark:text-white">
                     </div>
 
                     <div>
@@ -60,6 +60,21 @@
                     </div>
                     {{-- ... Tambahkan field lainnya sesuai fillable ... --}}
 
+                    <div>
+                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Quantity</label>
+                        <input type="number" name="quantity" value="{{ old('quantity') }}" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700 dark:text-white">
+                    </div>
+
+                    <div>
+                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Alert Threshold</label>
+                        <input type="number" name="alert_threshold" value="{{ old('alert_threshold') }}" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700 dark:text-white">
+                    </div>
+
+                    <div>
+                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Description</label>
+                        <textarea name="description" value="{{ old('description') }}" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700 dark:text-white">
+                        </textarea>
+                    </div>
                 </div>
 
                 <div class="mt-6 flex justify-end">
@@ -129,7 +144,6 @@
             </div>
         </form>
     </div>
-</div>
 </div>
 
 <style> [x-cloak] { display: none !important; } </style>
