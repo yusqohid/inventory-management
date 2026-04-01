@@ -24,8 +24,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::select(['name'])->get();
-        $suppliers = Supplier::select(['name'])->get();
+        $categories = Category::select(['id', 'name'])->get();
+        $suppliers = Supplier::select(['id', 'name'])->get();
 
         return view('products.create', compact('categories', 'suppliers'));
     }
@@ -38,7 +38,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'category_id'     => 'required|exists:categories,id',
             'supplier_id'     => 'required|exists:suppliers,id',
-            'sku'             => 'required|string|unique:products,sku',
+            'sku'             => 'nullable|string|unique:products,sku',
             'name'            => 'required|string|max:255',
             'description'     => 'nullable|string',
             'purchase_price'  => 'required|numeric|min:0',
@@ -47,7 +47,7 @@ class ProductController extends Controller
             'alert_threshold' => 'required|integer|min:0',
         ]);
 
-        Product::created($validated);
+        Product::create($validated);
 
         return to_route('products.index')
                          ->with('success', 'Product has been added successfully!');
